@@ -1,1 +1,12 @@
-<p>characterlist works!</p>
+<div class="container">
+  <h2>Harry Potter Characters</h2>
+  <div class="grid">
+    @for (character of characters; track character.id) {
+      <div class="card" (click)="goToDetails(character.id)">
+        <img [src]="character.image || 'https://placehold.co/200x250?text=No+Image'" [alt]="character.name" />
+        <p class="name">{{ character.name }}</p>
+        <p class="house">{{ character.house || 'No House' }}</p>
+      </div>
+    }
+  </div>
+</div>

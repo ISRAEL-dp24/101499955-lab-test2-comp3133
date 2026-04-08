@@ -1,0 +1,32 @@
+.container {
+  padding: 20px;
+}
+
+.details-card {
+  display: flex;
+  gap: 30px;
+  background: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+.details-card img {
+  width: 250px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.info h2 {
+  color: #e25822;
+  margin-top: 0;
+}
+
+.info p {
+  margin: 6px 0;
+}
+
+button {
+  margin-top: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}

@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HpService } from '../../services/hp.service';
 import { Character } from '../../models/character.model';
+
+
+
 
 @Component({
   selector: 'app-characterdetails',
@@ -11,24 +14,21 @@ import { Character } from '../../models/character.model';
   styleUrl: './characterdetails.css'
 })
 export class CharacterdetailsComponent implements OnInit {
-  character: Character | null = null;
+  character = signal<Character | null>(null);
 
   constructor(
     private route: ActivatedRoute,
     private hpService: HpService,
     private router: Router
   ) {}
-
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.hpService.getCharacterById(id).subscribe(data => {
-        this.character = data[0];
+        this.character.set(data[0]);
       });
     }
   }
-
   goBack() {
-    this.router.navigate(['/']);
-  }
+    this.router.navigate(['/']);}
 }

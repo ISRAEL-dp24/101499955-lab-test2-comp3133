@@ -8,7 +8,7 @@
   </select>
 
   <div class="grid">
-    @for (character of characters; track character.id) {
+    @for (character of characters(); track character.id) {
       <div class="card">
         <img [src]="character.image || 'https://placehold.co/200x250?text=No+Image'" [alt]="character.name" />
         <p class="name">{{ character.name }}</p>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { HpService } from '../../services/hp.service';
 import { Character } from '../../models/character.model';
@@ -11,13 +11,13 @@ import { Character } from '../../models/character.model';
   styleUrl: './characterlist.css'
 })
 export class CharacterlistComponent implements OnInit {
-  characters: Character[] = [];
+  characters = signal<Character[]>([]);
 
   constructor(private hpService: HpService, private router: Router) {}
 
   ngOnInit() {
     this.hpService.getAllCharacters().subscribe(data => {
-      this.characters = data;
+      this.characters.set(data);
     });
   }
 
